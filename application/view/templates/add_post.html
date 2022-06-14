@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Enter a post</h1>
+    {% if post_sent == True %}
+        <h4>Post published!</h4>
+    {% endif %}
+    <form action="{{ url_for('save') }}" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="off">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        <label for="text" class="form-label">Text:</label>
+        <textarea class="form-control" maxlength="200" id="text" rows="2" name="text" required></textarea>
+        <div class="d-flex justify-content-between mt-3">
+            <input type="submit" class="btn btn-primary" value="Publish">
+            <a href="{{ url_for('home')}}" class="btn btn-primary">Timeline</a>
+        </div>
+    </div>
+    </form>
+</div>
+{% endblock %}
